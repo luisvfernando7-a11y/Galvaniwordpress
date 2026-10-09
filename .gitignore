@@ -1,0 +1,15 @@
+wp-config.php
+.env
+.env.*
+!.env.example
+auth.json
+*.pem
+*.key
+*.sql
+*.sql.gz
+node_modules/
+vendor/
+wp-admin/
+wp-includes/
+wp-content/uploads/
+*.log
