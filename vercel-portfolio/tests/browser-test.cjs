@@ -22,8 +22,8 @@ const paths=[];
 function walk(dir) { for(const entry of fs.readdirSync(dir,{withFileTypes:true})) { const file=path.join(dir,entry.name); if(entry.isDirectory())walk(file); else if(entry.name==='index.html')paths.push('/'+path.relative(root,path.dirname(file)).replaceAll(path.sep,'/')+(path.dirname(file)===root?'':'/')); } }
 walk(root);
 (async()=>{
- await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
- const base='http://127.0.0.1:'+server.address().port;
+ if (!process.env.RG_PORTFOLIO_URL) await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+ const base=(process.env.RG_PORTFOLIO_URL || 'http://127.0.0.1:'+server.address().port).replace(/\/$/,'');
  let browser;
  try {
   browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
@@ -84,5 +84,5 @@ walk(root);
   assert.deepEqual(await desktop.cookies(),[]);assert.deepEqual(await mobile.cookies(),[]);
   assert.deepEqual(errors,[]);assert.deepEqual(external,[]);assert.deepEqual(bad,[]);assert.deepEqual(mutations,[]);
   console.log(`PASS: ${paths.length} pages desktop/mobile, ${links.size} internal links, images, keyboard/focus, filters/carousels/dialogs, local cart/persistence/removal/fulfilment, blocked storage fallback, account preview, no-JS product fallback, 404, reduced motion, zero external requests/cookies/POSTs/JS errors.`);
- } finally {if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));}
+ } finally {if(browser)await browser.close();if(server.listening)await new Promise(resolve=>server.close(resolve));}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});

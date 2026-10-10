@@ -22,13 +22,13 @@ A versão independente foi criada em `vercel-portfolio/`, preservando layout, co
 
 Esses dados descrevem um deployment anterior à criação da versão estática e não comprovam seu funcionamento.
 
-### Resultados verificados nesta execução
+### Estado atual verificado — publicação concluída
 
-A pasta `vercel-portfolio/` não existia inicialmente; foi criada nesta tarefa. A URL principal retornou **HTTP 404 / Vercel NOT_FOUND** antes do envio dos novos fontes. Não há acesso às configurações privadas da Vercel nesta sessão; Root Directory, domínio, Git e logs do deployment precisam ser conferidos no painel. Build independente e testes locais de páginas/interações passaram; isso não equivale a um deployment novo verificado.
+A URL principal https://raccoltogalvani.vercel.app/ responde **HTTP 200**. O projeto existente estava configurado com Root Directory `.`; corrigido por CLI/API autenticada para `vercel-portfolio`, Framework `Other`, Build `node build.mjs`, Output `public` e Install vazio. WordPress/AWS preservados.
 
-Verificação pública complementar em 10/10/2026, antes do push estático: os 10 caminhos principais e três recursos consultados retornaram 404 / NOT_FOUND. O deployment informado retornou 302 para `vercel.com` (200 ao seguir o redirect, sem comprovar o site). Teste local final: PASS em 23 páginas desktop/móvel e 23 destinos internos, incluindo armazenamento bloqueado, ficha sem JavaScript e 404; zero chamadas externas/POSTs/cookies/erros.
+Deployment de produção verificado em estado **READY**: https://raccoltogalvani-432p0v0f5-luis-projects-e3d5069f.vercel.app, commit `f83481a2f0daf15652b6d6842d16c739a927908a`. O alias principal foi atribuído e `/data/build.json` confirmou esse commit e o marcador `raccolto-static-v1`.
 
-Verificação após push dos fontes (`f5f509278df9085c3fa08143fc7c1f7aaddc486e`), confirmado via `git ls-remote`: `/`, `/enoteca/` e `/data/build.json` ainda retornaram 404 / Vercel NOT_FOUND. Código enviado para main sem force; novo deployment funcional não confirmado. Conferir os campos do projeto, logs e domínio no painel da Vercel.
+Teste de navegador executado **no domínio público Vercel**, sem mapeamento para loopback: PASS em 23 páginas desktop/móvel e 23 destinos internos, incluindo fotos, catálogo/filtros, teclado/foco, carrinho persistente, retirada/entrega, conta demonstrativa, armazenamento bloqueado e ficha sem JavaScript. Nenhuma chamada à AWS, POST comercial, cookie da aplicação ou erro JavaScript capturado. Teste local também repetido e aprovado. Resultados anteriores de 404 são históricos, antes da correção do projeto.
 
 Importe o mesmo repositório, ou ajuste o projeto existente, com **Root Directory = `vercel-portfolio`**, **Framework Preset = `Other`**, **Build Command = `node build.mjs`**, **Output Directory = `public`** e **Install Command com override vazio**. Não são necessários segredos ou variáveis de ambiente. A configuração está apenas em `vercel-portfolio/vercel.json`.
 

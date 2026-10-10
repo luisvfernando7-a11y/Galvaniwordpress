@@ -42,7 +42,7 @@ Teste automatizado requer Chromium e Playwright Core já instalados no ambiente 
 RG_PLAYWRIGHT_PATH=/tmp/rg-browser/node_modules/playwright-core node vercel-portfolio/tests/browser-test.cjs
 ```
 
-O teste inicia/encerra seu próprio servidor temporário, aplica os cabeçalhos da configuração e bloqueia todas as requisições externas. Não se conecta ao WordPress. Capturas ficam em `/tmp/rg-portfolio-desktop.png` e `/tmp/rg-portfolio-mobile.png`. Resultados realmente executados: `../docs/VALIDACAO-VERCEL.md`.
+Sem `RG_PORTFOLIO_URL`, o teste inicia/encerra seu próprio servidor temporário e aplica os cabeçalhos da configuração. Com `RG_PORTFOLIO_URL=https://raccoltogalvani.vercel.app`, testa o domínio público, sem servidor local. Em ambos os modos bloqueia requisições fora da origem testada. Não se conecta ao WordPress. Capturas ficam em `/tmp/rg-portfolio-desktop.png` e `/tmp/rg-portfolio-mobile.png`. Resultados realmente executados: `../docs/VALIDACAO-VERCEL.md`.
 
 ## Conteúdo e manutenção
 

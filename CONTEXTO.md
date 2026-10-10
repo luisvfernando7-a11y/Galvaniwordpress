@@ -145,7 +145,7 @@ Não interpretar Ready como confirmação de que a versão estática foi criada,
 - Build `node build.mjs`, sem dependências, também executado em cópia isolada da pasta, sem WordPress ou outros arquivos do repositório. Auditoria estática sem URLs AWS, endpoints WordPress ou nonces no conteúdo publicado. Testes locais com todas as requisições externas bloqueadas aprovados. Detalhes em `docs/VALIDACAO-VERCEL.md`.
 - Consulta HTTP real ao domínio principal retornou 404 / Vercel NOT_FOUND antes do push. Não há acesso às configurações privadas da Vercel para confirmar root, alias, integração Git ou logs; dados do painel acima permanecem atribuídos ao usuário.
 
-### Configuração e pendências Vercel
+### Configuração e pendências na preparação inicial (resolvidas abaixo)
 
 - Conferir no painel: Root Directory `vercel-portfolio`, Framework Preset `Other`, Build Command `node build.mjs`, Output Directory `public`, Install Command override vazio, produção `main` e domínio associado ao projeto. Nenhum segredo necessário.
 - Um vercel.json na subpasta não altera Root Directory do projeto sozinho. Gerar deployment de um commit que contém esta pasta e verificar build/logs, URL principal, páginas e `/data/build.json`. Não declarar o novo deployment concluído apenas por um push ou pelo status Ready antigo.
@@ -154,3 +154,19 @@ Não interpretar Ready como confirmação de que a versão estática foi criada,
 Verificação pública complementar em 10/10/2026, antes do push estático: os 10 caminhos principais e três recursos consultados retornaram 404 / NOT_FOUND. O deployment informado retornou 302 para `vercel.com` (200 ao seguir o redirect, sem comprovar o site). Teste local final: PASS em 23 páginas desktop/móvel e 23 destinos internos, incluindo armazenamento bloqueado, ficha sem JavaScript e 404; zero chamadas externas/POSTs/cookies/erros.
 
 Verificação após push dos fontes (`f5f509278df9085c3fa08143fc7c1f7aaddc486e`), confirmado via `git ls-remote`: `/`, `/enoteca/` e `/data/build.json` ainda retornaram 404 / Vercel NOT_FOUND. Código enviado para main sem force; novo deployment funcional não confirmado. Conferir os campos do projeto, logs e domínio no painel da Vercel.
+
+## Histórico da tentativa inicial de publicação Vercel — 10/10/2026
+
+- Novo `git push origin main` retornou Everything up-to-date; fontes estáticos já enviados. URL principal novamente consultada: HTTP 404 / Vercel NOT_FOUND.
+- CLI Vercel 63.1.2 instalada temporariamente com cache em `/tmp/rg-vercel-cache`. Primeira instalação falhou por ENOSPC no disco raiz; removido somente o cache npx incompleto criado nesta tentativa. WordPress e backups privados preservados.
+- `vercel whoami` informou Logged out. Login oficial por dispositivo iniciado, aguardando autorização na conta do projeto; nenhum token ou senha foi impresso ou registrado no projeto. Integração Vercel disponível, mas ainda não conectada. Não houve deployment nesta etapa.
+
+## Publicação Vercel confirmada — 10/10/2026
+
+- Autenticação oficial por dispositivo concluída na CLI Vercel; credenciais mantidas pela CLI fora do projeto, nunca lidas ou versionadas. Integração/plugin sugerido não foi necessário para publicar.
+- Inspeção autenticada confirmou projeto existente `raccoltogalvani`, equipe `luis-projects-e3d5069f`, Root Directory `.` e campos de build/output padrão. Esse root não publicava a versão estática. Valores observados salvos privadamente em `/tmp/rg-vercel-settings-before.json`, sem segredos.
+- Corrigido o projeto existente via API autenticada: root `vercel-portfolio`, Framework Other, Build `node build.mjs`, Output `public`, Install vazio. Node.js remoto 24.x preservado. Não criado outro projeto e nenhuma alteração AWS.
+- Deployment de produção criado diretamente do GitHub, commit `f83481a2f0daf15652b6d6842d16c739a927908a`, ID `dpl_9aAH5G7BA5zjBqfRAhSv8MuAiDnZ`, URL https://raccoltogalvani-432p0v0f5-luis-projects-e3d5069f.vercel.app. API confirmou READY e alias `raccoltogalvani.vercel.app` atribuído.
+- Home pública HTTP 200; `/data/build.json` confirmou marcador estático e SHA do deployment. Site vigente: https://raccoltogalvani.vercel.app/.
+- Script de QA aceita `RG_PORTFOLIO_URL` para testar publicação sem servidor local. Executado na URL pública HTTPS: PASS nas 23 páginas desktop/celular e 23 destinos internos, fotos, filtros/carrosséis, teclado/foco/modal, carrinho local, persistência/remoção, retirada/entrega, conta sem autenticação, armazenamento bloqueado, detalhes sem JavaScript e 404. Zero chamadas externas à origem Vercel, POSTs, cookies nos contextos verificados ou erros JavaScript. Teste local também repetido: PASS.
+- Os registros anteriores de 404 e falta de acesso descrevem a preparação anterior; problema de publicação resolvido nesta etapa. Ainda não há sincronização automática WordPress → versão estática.
