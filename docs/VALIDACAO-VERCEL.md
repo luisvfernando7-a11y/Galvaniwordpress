@@ -125,3 +125,7 @@ Resultado remoto: **PASS, exit 0**, nas mesmas 23 páginas desktop/celular e 23 
 O Chromium executou na EC2, mas requisitou HTTPS da Vercel: **não houve loopback nem chamada ao WordPress**. Os arquivos estáticos publicados são independentes da EC2; não foi necessário desligá-la. Nenhum teste comercial criou pedidos ou contas. Não foi testado Safari/Firefox ou realizada auditoria formal WCAG.
 
 Os 404 anteriores ficaram resolvidos após corrigir Root Directory e publicar; foram mantidos neste relatório como histórico real.
+
+### Publicação automática da main confirmada
+
+API de projeto confirmou integração GitHub com `luisvfernando7-a11y/Galvaniwordpress` e productionBranch `main`. O push do commit `9e58270cd8699665cdda41ea68a8047d6a39d819` gerou automaticamente o deployment `dpl_7fLTW4SDtfSxtDjWv8aS4FMvtduQ`, URL https://raccoltogalvani-jjz0pyk1c-luis-projects-e3d5069f.vercel.app, estado READY/production. Home, Enoteca e build.json retornaram HTTP 200; marcador confirmou esse mesmo SHA e hash de catálogo inalterado. Os testes de interação completos já haviam passado na mesma versão da aplicação; esse commit alterou somente documentação e script de QA. A URL principal aponta à produção vigente; consultar `/data/build.json` para o SHA após pushes posteriores.

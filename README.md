@@ -26,7 +26,7 @@ Esses dados descrevem um deployment anterior à criação da versão estática e
 
 A URL principal https://raccoltogalvani.vercel.app/ responde **HTTP 200**. O projeto existente estava configurado com Root Directory `.`; corrigido por CLI/API autenticada para `vercel-portfolio`, Framework `Other`, Build `node build.mjs`, Output `public` e Install vazio. WordPress/AWS preservados.
 
-Deployment de produção verificado em estado **READY**: https://raccoltogalvani-432p0v0f5-luis-projects-e3d5069f.vercel.app, commit `f83481a2f0daf15652b6d6842d16c739a927908a`. O alias principal foi atribuído e `/data/build.json` confirmou esse commit e o marcador `raccolto-static-v1`.
+Deployment de produção confirmado em estado **READY**, com alias principal ativo. O push seguinte também gerou um deployment automático READY; `/data/build.json` confirmou o SHA enviado para `main` e o marcador `raccolto-static-v1`. Esse endpoint permite conferir o commit vigente; os deployments testados estão registrados no relatório de validação.
 
 Teste de navegador executado **no domínio público Vercel**, sem mapeamento para loopback: PASS em 23 páginas desktop/móvel e 23 destinos internos, incluindo fotos, catálogo/filtros, teclado/foco, carrinho persistente, retirada/entrega, conta demonstrativa, armazenamento bloqueado e ficha sem JavaScript. Nenhuma chamada à AWS, POST comercial, cookie da aplicação ou erro JavaScript capturado. Teste local também repetido e aprovado. Resultados anteriores de 404 são históricos, antes da correção do projeto.
 
