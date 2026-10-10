@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Raccolto Core — demonstração
  * Description: Catálogo persistente e proteção comercial do portfólio fictício Raccolto Galvani. Bloqueia pedidos, pagamentos e e-mails.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires Plugins: woocommerce
  * Requires PHP: 8.0
  */
@@ -97,6 +97,12 @@ function rg_add_product() {
 add_action('admin_post_rg_add_product', 'rg_add_product');
 add_action('admin_post_nopriv_rg_add_product', 'rg_add_product');
 add_action('woocommerce_before_customer_login_form', function () { echo '<p class="demo-notice">Conta de demonstração: use apenas dados de teste. E-mails, inclusive recuperação de senha, estão desativados. Para recuperar acesso, solicite ao administrador do laboratório.</p>'; });
+add_filter('woocommerce_get_privacy_policy_text', function ($text, $type) {
+    if ($type === 'registration') {
+        return 'Use somente dados de teste. Os dados da conta são usados para gerenciar seu acesso à demonstração, conforme nossa [privacy_policy]. Nenhuma compra real será realizada.';
+    }
+    return $text;
+}, 10, 2);
 function rg_product_details($product) {
     echo '<p class="demo-tag">Produto demonstrativo · informações ilustrativas</p><p>' . esc_html(wp_strip_all_tags($product->get_description())) . '</p><dl class="wine-facts">';
     foreach (rg_fields() as $key=>$label) {

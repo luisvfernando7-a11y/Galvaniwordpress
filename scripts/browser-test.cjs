@@ -3,7 +3,8 @@ const { chromium } = require(process.env.RG_PLAYWRIGHT_PATH || 'playwright-core'
 const assert = require('node:assert/strict');
 const crypto = require('node:crypto');
 const fs = require('node:fs');
-const base = process.env.RG_SITE_URL || 'http://ec2-35-173-239-89.compute-1.amazonaws.com';
+const { execFileSync } = require('node:child_process');
+const base = (process.env.RG_SITE_URL || execFileSync('php', ['/tmp/rg-wp.phar', '--allow-root', '--path=/var/www/html', 'option', 'get', 'home'], { encoding: 'utf8' }).trim()).replace(/\/$/, '');
 (async () => {
   const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', args: ['--no-sandbox','--no-proxy-server',`--host-resolver-rules=MAP ${new URL(base).hostname} 127.0.0.1`] });
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
@@ -14,6 +15,12 @@ const base = process.env.RG_SITE_URL || 'http://ec2-35-173-239-89.compute-1.amaz
   page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(base)) broken.push(`${r.status()} ${new URL(r.url()).pathname}`); });
   const goto = async path => { const r = await page.goto(base + path, { waitUntil: 'networkidle' }); assert.equal(r.status(),200,path); };
   const overflow = async () => assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'Horizontal page overflow');
+  const images = async () => {
+    await page.locator('img').evaluateAll(async elements => {
+      await Promise.all(elements.map(img => { img.loading = 'eager'; return img.decode().catch(() => {}); }));
+    });
+    assert.deepEqual(await page.locator('img').evaluateAll(elements => elements.filter(img => !img.complete || img.naturalWidth === 0).map(img => img.getAttribute('src'))), [], 'Images must decode');
+  };
   await goto('/');
   assert.equal(await page.locator('h1').count(),1);
   assert(!(await context.cookies()).some(c=>c.name.startsWith('sbjs_')), 'No optional attribution cookies');
@@ -21,13 +28,16 @@ const base = process.env.RG_SITE_URL || 'http://ec2-35-173-239-89.compute-1.amaz
   await overflow();
   await page.evaluate(async () => { for(let y=0;y<document.body.scrollHeight;y+=650){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,120));} window.scrollTo(0,0); });
   await page.waitForTimeout(800);
+  await images();
   await page.screenshot({ path: '/tmp/rg-home-desktop.png', fullPage: true });
   for (const path of ['/nossa-historia/','/gastronomia/','/experiencia/','/contato/','/termos/','/privacidade/','/conta/','/carrinho/']) {
-    await goto(path); await overflow();
+    await goto(path); await overflow(); await images();
     assert.equal(await page.locator('meta[name=description]').count(),1,path);
   }
   await goto('/enoteca/');
+  await images();
   assert.equal(await page.locator('.product-card:visible').count(),9);
+  const productPath = new URL(await page.locator('.product-detail').first().getAttribute('href')).pathname;
   await page.selectOption('select[name=cultivo]','organico');
   assert.equal(await page.locator('.product-card:visible').count(),4);
   await page.selectOption('select[name=cor]','laranja');
@@ -76,16 +86,26 @@ const base = process.env.RG_SITE_URL || 'http://ec2-35-173-239-89.compute-1.amaz
   await goto('/checkout/'); assert(new URL(page.url()).pathname==='/carrinho/','Checkout redirects');
   const response = await context.request.post('http://127.0.0.1/wp-json/wc/store/v1/checkout', {data:{}, headers:{Host:new URL(base).host}});
   assert.equal(response.status(),403);
+  await goto(productPath); await images();
+  assert((await page.locator('.wine-facts').first().textContent()).includes('Ano de engarrafamento'), 'Native product details');
   // The expected blocked response is not a broken site resource.
   await goto('/conta/');
+  assert((await page.locator('.woocommerce-privacy-policy-text').textContent()).includes('Use somente dados de teste'), 'Registration privacy notice');
+  const visibility = page.locator('form.register .show-password-input');
+  assert.equal(await visibility.evaluate(el => getComputedStyle(el, '::before').content), '"Mostrar senha"');
+  await visibility.click();
+  assert.equal(await page.locator('#reg_password').getAttribute('type'), 'text');
+  await visibility.click();
+  assert.equal(await page.locator('#reg_password').getAttribute('type'), 'password');
   const email = `rg-qa-${Date.now()}@example.invalid`;
   const password = crypto.randomBytes(24).toString('base64url') + '!Aa9';
   fs.writeFileSync('/tmp/rg-qa-user.json',JSON.stringify({email}),{mode:0o600});
   await page.fill('#reg_email',email); await page.fill('#reg_password',password);
-  await page.waitForTimeout(1000);
+  await page.locator('#reg_password').press('Tab');
+  await page.waitForFunction(() => document.querySelector('.woocommerce-password-strength')?.classList.contains('strong') && !document.querySelector('button[name=register]')?.disabled);
   try { await Promise.all([page.waitForNavigation({ waitUntil:'networkidle' }),page.getByRole('button',{name:'Cadastre-se',exact:true}).click()]); } catch(e) { console.log('Registration diagnostics:', await page.evaluate(()=>({errors:[...document.querySelectorAll('.woocommerce-error')].map(el=>el.textContent),invalidFields:[...document.querySelectorAll('form.register input')].filter(el=>!el.validity.valid).map(el=>el.id),buttonDisabled:document.querySelector('button[name=register]')?.disabled,strength:document.querySelector('.woocommerce-password-strength')?.textContent}))); await page.screenshot({path:'/tmp/rg-register-diagnostic.png',fullPage:true}); throw e; }
   assert(await page.locator('.woocommerce-MyAccount-navigation').isVisible(),'Registration and account');
-  await page.getByRole('link',{name:'Sair',exact:true}).click();
+  await page.locator('.woocommerce-MyAccount-navigation').getByRole('link',{name:'Sair',exact:true}).click();
   await page.waitForLoadState('networkidle');
   await page.fill('#username',email); await page.fill('#password',password);
   await Promise.all([page.waitForNavigation({waitUntil:'networkidle'}),page.getByRole('button',{name:'Acessar',exact:true}).click()]);

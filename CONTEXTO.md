@@ -55,25 +55,13 @@ Codex CLI 0.162.0 instalado.
 Login por dispositivo habilitado; usuário informou ter concluído.
 Confirmar sessão com codex login status quando necessário.
 
-## Base já preparada
-Pacote: raccolto-galvani-starter.zip, entregue no chat.
-Tema clássico com homepage, paleta, história, carrossel,
-filtros por cor e modal de detalhes.
-Produtos ilustrativos; ainda sem fotos, catálogo persistente,
-contas, carrinho ou checkout.
-JavaScript verificado; PHP e funcionamento em WordPress ainda precisam de teste.
-Upload e ativação do tema no servidor ainda não confirmados.
+## Estado atual
 
-## Próximos passos
-1. Adicionar o tema inicial a este repositório.
-2. Validar PHP e testar ativação no WordPress.
-3. Refinar layout e adicionar imagens licenciadas.
-4. Implementar catálogo persistente em plugin separado.
-5. Implementar os demais fluxos demonstrativos.
-6. Atualizar este documento a cada etapa.
+Tema e plugin próprios estão versionados e instalados; WooCommerce ativo e catálogo persistente com 13 produtos. Páginas, conta e carrinho demonstrativo implementados. Não retomar a partir do antigo starter nem reinstalar WordPress.
 
-Repositório:
-https://github.com/luisvfernando7-a11y/Galvaniwordpress
+Repositório: https://github.com/luisvfernando7-a11y/Galvaniwordpress
+
+Endereço vigente, confirmado por IMDSv2 em 10/10/2026: http://ec2-100-29-12-33.compute-1.amazonaws.com/ (IPv4 `100.29.12.33`). Painel: http://ec2-100-29-12-33.compute-1.amazonaws.com/wp-admin/.
 
 ## Implementação — 09/10/2026
 
@@ -99,8 +87,8 @@ https://github.com/luisvfernando7-a11y/Galvaniwordpress
 - Backup privado de banco e arquivos: `/var/backups/raccolto-20261009-134424`, fora do repositório e document root, diretório 700.
 - URLs retornavam 404: `mod_rewrite` estava ausente e `AllowOverride None`. Backup Apache em `/var/backups/raccolto-routing-20261009-135724`; habilitado rewrite e arquivo `raccolto-wordpress.conf` restrito a `/var/www/html` com `AllowOverride FileInfo`. Configtest aprovado e reload realizado. Não alterada MariaDB ou outros projetos.
 - Página padrão Apache `index.html` preservada no backup de roteamento; `index.php` priorizado.
-- EC2 mudou de IP após parada do laboratório. Hostname/IP atuais confirmados consultando apenas metadados públicos do próprio servidor: `ec2-35-173-239-89.compute-1.amazonaws.com`, `35.173.239.89`.
-- URLs antigas foram substituídas com WP-CLI seguro para serialização, sem alterar GUIDs (10 substituições). Site atual: http://ec2-35-173-239-89.compute-1.amazonaws.com/ ; painel em `/wp-admin/`.
+- Histórico de 09/10: a EC2 então usava outro IP/DNS. O endereço vigente está na seção Estado atual; não reutilizar o DNS histórico.
+- Em 09/10, URLs foram corrigidas com WP-CLI seguro para serialização, sem alterar GUIDs. Nova correção após mudança da EC2 foi executada em 10/10, registrada abaixo.
 - Node.js, npm e Chromium instalados para validação; Playwright Core temporário em `/tmp/rg-browser`. WP-CLI em `/tmp/rg-wp.phar`; WooCommerce ZIP temporário em `/tmp/rg-woocommerce.zip`.
 
 ### Validação e decisões de manutenção
@@ -117,3 +105,17 @@ https://github.com/luisvfernando7-a11y/Galvaniwordpress
 - Pode-se refinar fotografias específicas de vinhos, frios e queijos com novas fontes licenciadas, sem transformar nomes ilustrativos em alegações comerciais.
 - Administrador deve definir retenção/armazenamento dos backups e remoção periódica de contas de teste; não há exclusão automática.
 - Se incluir cookies opcionais futuramente, implementar aceitar/rejeitar/rever antes do carregamento e atualizar políticas.
+
+## Retomada — 10/10/2026
+
+- AGENTS.md e fontes revisados; arquivos instalados do tema/plugin coincidem com o repositório. WordPress 7.1.3, WooCommerce 11.2.0, Raccolto Core 1.0.0 e tema Raccolto Galvani 1.0.0; os três últimos ativos. Apache/MariaDB ativos. Nenhuma reinstalação ou alteração Apache nesta retomada.
+- IMDSv2 consultado exclusivamente para `public-ipv4` e `public-hostname`, sem imprimir token. `home` e `siteurl` corrigidos para o endereço vigente.
+- Backup privado anterior às mutações: `/var/backups/raccolto-20261010-113631`, diretório 700, banco e snapshot 600. Arquivos instalados preservados.
+- WP-CLI `search-replace --all-tables-with-prefix --skip-columns=guid --precise`, após dry-run: 10 substituições do DNS anterior e 3 referências do DNS mais antigo em registros auxiliares WooCommerce. GUIDs excluídos. Nenhuma credencial lida para documentação.
+- Script de navegador agora consulta `home` em vez de fixar um DNS que fica obsoleto. Acrescentadas verificações de decodificação de fotos e ficha nativa de produto. A primeira execução adicional falhou por comparar `innerText` transformado em maiúsculas pelo CSS; corrigido para `textContent`, sem alteração da ficha do site.
+- Relatório desta retomada criado em `docs/VALIDACAO.md`; README atualizado. Acesso local e DNS público desde a EC2 retornaram HTTP 200. Ferramenta externa não conseguiu verificar HTTP: tentou HTTPS, ainda não configurado. Acesso externo permanece não comprovado; não foi diagnosticada falha de Security Group.
+
+- Revisão visual identificou botão nativo de mostrar senha sem indicação visual (CSS padrão WooCommerce desativado pelo tema) e aviso de privacidade do cadastro em inglês. Corrigidos rótulo visual que acompanha `aria-label` e aviso em português com link da política via filtro WooCommerce. Tema/plugin agora 1.0.1; somente quatro arquivos próprios alterados foram copiados após o backup.
+- Teste usa Tab para disparar a validação nativa da senha antes do cadastro e seleciona Sair pelo menu da conta, evitando dois links homônimos. Script de limpeza verifica registro sintético e papel customer e não remove outras contas.
+
+- Validação final do navegador: PASS, incluindo páginas/fotos, filtros, teclado/foco/modal, ficha nativa, carrinho, retirada/entrega, mostrar senha, cadastro/logout/login, móvel e reduced-motion. Duas contas sintéticas efetivamente criadas foram removidas. Teste servidor repetido: PASS, zero pedidos; fontes instalados conferidos sem diferenças. PHP (11 arquivos), JavaScript e `git diff --check` aprovados.

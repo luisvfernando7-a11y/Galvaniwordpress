@@ -8,8 +8,8 @@ add_action('after_setup_theme', function () {
     register_nav_menus(['primary' => 'Navegação principal']);
 });
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('raccolto', get_theme_file_uri('assets/site.css'), [], '1.0.0');
-    wp_enqueue_script('raccolto', get_theme_file_uri('assets/site.js'), [], '1.0.0', true);
+    wp_enqueue_style('raccolto', get_theme_file_uri('assets/site.css'), [], '1.0.1');
+    wp_enqueue_script('raccolto', get_theme_file_uri('assets/site.js'), [], '1.0.1', true);
 });
 function rg_image($name) { return get_theme_file_uri('assets/' . $name . '.jpg'); }
 function rg_link($slug) { return home_url('/' . $slug . '/'); }

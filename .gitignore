@@ -14,3 +14,8 @@ auth.json
 *.pem
 *.key
 vendor/
+backups/
+*.sql.*
+*.sqlite*
+*.bak
+*.zip

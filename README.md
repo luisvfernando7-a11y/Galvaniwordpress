@@ -4,15 +4,18 @@ Portfólio de restaurante **fictício**, integrado à instalação existente de 
 
 ## Abrir
 
-Site instalado: http://ec2-35-173-239-89.compute-1.amazonaws.com/
+Site instalado (IMDSv2 confirmado em 10/10/2026): http://ec2-100-29-12-33.compute-1.amazonaws.com/
 
-Painel: `/wp-admin/`, com as credenciais já existentes do administrador. Não há credenciais neste repositório.
+Painel: http://ec2-100-29-12-33.compute-1.amazonaws.com/wp-admin/, com as credenciais já existentes do administrador. Não há credenciais neste repositório.
+
+A home respondeu HTTP 200 por loopback e pelo DNS público a partir da própria EC2. Acesso HTTP de fora da EC2 ainda não foi comprovado; veja [relatório de validação](docs/VALIDACAO.md).
 
 ## Estrutura
 
 - `wp-content/themes/raccolto-galvani`: tema clássico, CSS e JavaScript sem compilação, homepage editorial e integração WooCommerce.
 - `wp-content/plugins/raccolto-core`: catálogo, classificações, campos administrativos e proteções da demonstração; funciona independentemente do tema.
 - `scripts/configure.php`: configuração idempotente de páginas, menu, produtos e mídia. Não sobrescreve conteúdo de páginas ou produtos já existentes.
+- `scripts/cleanup-test-user.php`: limpeza restrita à conta sintética registrada pelo teste de navegador.
 - `scripts/backup.sh`: backup privado do banco e de arquivos, fora do repositório e document root.
 - `scripts/install.sh`: instalação no laboratório existente, depois do backup.
 - `scripts/wordpress-routing.sh`: correção específica das URLs amigáveis do laboratório; não é necessária em servidores já configurados.
@@ -71,7 +74,7 @@ npm install --prefix /tmp/rg-browser playwright-core
 RG_PLAYWRIGHT_PATH=/tmp/rg-browser/node_modules/playwright-core node scripts/browser-test.cjs
 ```
 
-Pode definir `RG_SITE_URL` para outro endereço. O teste mapeia o hostname para loopback no Chromium; execute no servidor que hospeda o site. O teste cria uma conta de teste com domínio `.invalid`, nunca imprime a senha e grava apenas o e-mail em `/tmp/rg-qa-user.json` privado para limpeza posterior. Apague somente essa conta pelo painel ou WP-CLI após o teste. Capturas ficam em `/tmp/rg-home-desktop.png` e `/tmp/rg-enoteca-mobile.png`.
+O teste consulta `home` via WP-CLI para usar o endereço atual; pode definir `RG_SITE_URL` para outro endereço. Também verifica decodificação das imagens e a página nativa de detalhes do produto. O teste mapeia o hostname para loopback no Chromium; execute no servidor que hospeda o site. O teste cria uma conta de teste com domínio `.invalid`, nunca imprime a senha e grava apenas o e-mail em `/tmp/rg-qa-user.json` privado para limpeza posterior. Depois do teste, execute `php /tmp/rg-wp.phar --allow-root --path=/var/www/html eval-file scripts/cleanup-test-user.php`; ele verifica o padrão do e-mail e o papel de cliente antes de remover somente essa conta. Capturas ficam em `/tmp/rg-home-desktop.png` e `/tmp/rg-enoteca-mobile.png`.
 
 ## Pendências operacionais
 
