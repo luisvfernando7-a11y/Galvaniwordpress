@@ -92,3 +92,9 @@ Root Directory `vercel-portfolio`, Framework Preset `Other`, Build Command `node
 Após configurar, criar um deployment de um commit contendo esta versão. Conferir build/logs, domínio e `/data/build.json` com marcador `raccolto-static-v1` e SHA Git quando disponível. Ready antigo e sucesso do push não equivalem a um novo deployment verificado.
 
 Instruções completas: `vercel-portfolio/README.md`. Mudanças futuras no WordPress não sincronizam automaticamente com JSON/templates desta versão.
+
+## Verificação após envio dos fontes
+
+O commit `f5f509278df9085c3fa08143fc7c1f7aaddc486e` (Cria portfolio estatico independente para Vercel) foi enviado sem force para `origin/main`. `git ls-remote origin refs/heads/main` confirmou esse mesmo SHA no GitHub.
+
+Depois desse push, novas consultas HTTPS à home `/`, `/enoteca/` e `/data/build.json` ainda retornaram **HTTP 404 / Vercel NOT_FOUND**. Não há evidência de um novo deployment funcional; o envio de código foi concluído, mas a configuração/build/publicação da Vercel permanece por conferir no painel. Esta verificação não demonstra que a integração Git falhou ou que um build não esteja em andamento, pois não houve acesso aos logs/status privados.
