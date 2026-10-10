@@ -1,0 +1,32 @@
+{
+  "nossa-historia": {
+    "title": "Nossa História",
+    "italian": "LA NOSTRA STORIA",
+    "description": "Uma narrativa fictícia: Mônaco, 1982, o chef Luis Galvani e uma casa italiana imaginada em Roma.",
+    "content": "<div class=\"split\"><div><p class=\"eyebrow\">MÔNACO · 1982</p><h2>Uma casa feita de memórias.</h2><p>Na história fictícia de Raccolto Galvani, o chef Luis Galvani funda a casa em Mônaco, em 1982. Sua inspiração está nos gestos cotidianos: abrir uma garrafa, preparar uma massa, oferecer mais um lugar à mesa.</p><p>A narrativa chega a uma localização conceitual em Roma. A cidade inspira uma cozinha generosa, atenta à estação e às pequenas diferenças entre cada território italiano.</p></div><img src=\"/assets/massa.jpg\" alt=\"Massa italiana, referência visual da cozinha\" loading=\"lazy\" style=\"width:100%;height:420px;object-fit:cover\"></div><div class=\"prose\"><p class=\"editorial-quote\">“Uma boa mesa começa com vontade de compartilhar.”</p><p>Frase autoral deste portfólio; não é um depoimento real.</p><h3>A tradição como ponto de partida</h3><p>A identidade da casa une o vinho, a gastronomia e o convívio. O catálogo permite explorar uvas, métodos e harmonizações sem apresentar as fichas demonstrativas como produtos comerciais reais.</p><p>Raccolto Galvani é um projeto fictício. Não há restaurante, endereço ou chef real representado por esta narrativa.</p></div>"
+  },
+  "enoteca": {
+    "title": "Enoteca",
+    "italian": "IL VINO, IL TERRITORIO",
+    "description": "Explore vinhos demonstrativos por cor, açúcar, efervescência, especiais e cultivo, com fichas completas e harmonizações.",
+    "content": "<p>Uma coleção imaginada de territórios e estilos. Combine os filtros e selecione um vinho para abrir a ficha completa. As fotografias são ilustrativas e não representam garrafas à venda.</p>[rg_catalog type=\"vinho\"]"
+  },
+  "gastronomia": {
+    "title": "Gastronomia",
+    "italian": "SAPORI DELLA CASA",
+    "description": "Frios, queijos e especialidades italianas demonstrativas para descobrir combinações à mesa.",
+    "content": "<div class=\"split\"><div><h2>Sabores para compartilhar.</h2><p>Um início de refeição pode ser um convite: o sabor delicado de um queijo, o contraste de um frio curado, uma massa que acolhe o molho.</p><p>Explore nossa seleção fictícia. As fichas incluem notas e sugestões de harmonização; preços e produtos são demonstrativos.</p></div><img src=\"/assets/mesa.jpg\" alt=\"Pratos e ambiente de refeição italiana\" loading=\"lazy\" style=\"width:100%;height:380px;object-fit:cover\"></div>[rg_catalog type=\"especialidade\" filters=\"no\"]"
+  },
+  "experiencia": {
+    "title": "Experiência",
+    "italian": "L’ARTE DEL CONVIVIO",
+    "description": "Um roteiro conceitual de gastronomia, vinhos e convívio, sem reservas ou serviços reais.",
+    "content": "<div class=\"split\"><img src=\"/assets/ambiente.jpg\" alt=\"Ambiente de restaurante usado como referência conceitual\" loading=\"lazy\" style=\"width:100%;height:450px;object-fit:cover\"><div><p class=\"eyebrow\">UNA SERATA IMMAGINATA</p><h2>O prazer de ficar.</h2><p>Uma mesa acolhedora, luz quente e tempo para descobrir novos sabores. Esta é a experiência que inspira o projeto.</p><p>Comece pelos queijos e frios, encontre um vinho que dialogue com o prato e deixe a conversa conduzir o restante.</p></div></div><div class=\"prose\"><h3>Três tempos à mesa</h3><ol><li><strong>O encontro:</strong> uma seleção de antipasti e um vinho fresco.</li><li><strong>A descoberta:</strong> massas e sabores italianos com harmonizações sugeridas.</li><li><strong>A pausa:</strong> queijos maturados e uma última conversa.</li></ol><p>Não recebemos reservas, pedidos ou pagamentos. Tudo aqui é uma experiência de portfólio.</p><a class=\"button\" href=\"/enoteca/\">Monte sua seleção demonstrativa ↗</a></div>"
+  },
+  "contato": {
+    "title": "Contato",
+    "italian": "PARLIAMONE",
+    "description": "Informações sobre o projeto fictício Raccolto Galvani e a demonstração do site.",
+    "content": "<div class=\"prose\"><h2>Sobre este encontro.</h2><p>Raccolto Galvani é um portfólio fictício de restaurante. Roma é uma localização conceitual; não há endereço físico, telefone comercial ou serviço de reservas.</p><h3>Quer explorar a casa?</h3><p>Visite a enoteca, descubra as especialidades e experimente o carrinho demonstrativo. Nenhuma compra real será realizada.</p><a class=\"button\" href=\"/enoteca/\">Explorar a enoteca ↗</a><h3>Suporte do laboratório</h3><p>Para questões técnicas ou remoção de dados de teste, procure o administrador que disponibilizou este ambiente. Não há formulário de contato nem envio de e-mails neste site.</p></div>"
+  }
+}

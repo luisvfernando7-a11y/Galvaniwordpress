@@ -1,8 +1,38 @@
 # Raccolto Galvani
 
-Portfólio de restaurante **fictício**, integrado à instalação existente de WordPress e WooCommerce. História criativa: Mônaco, 1982, chef Luis Galvani; localização conceitual em Roma. Sem restaurante, endereço, depoimentos ou certificações reais.
+Portfólio de restaurante **fictício**, com duas versões: WordPress/WooCommerce na AWS e site estático independente em `vercel-portfolio/`. História criativa: Mônaco, 1982, chef Luis Galvani; localização conceitual em Roma. Sem restaurante, endereço, depoimentos ou certificações reais.
 
-## Abrir
+## Portfólio independente / Vercel
+
+URL principal informada pelo usuário: https://raccoltogalvani.vercel.app/
+
+A versão independente foi criada em `vercel-portfolio/`, preservando layout, cores, fotos, páginas e catálogo público do WordPress. Conta é uma prévia sem autenticação ou dados pessoais; carrinho é local. Nenhuma conexão ao WordPress/AWS é necessária para construir ou usar esta versão. Alterações futuras no WordPress **não sincronizam automaticamente** com o portfólio estático.
+
+### Dados fornecidos pelo usuário a partir do painel
+
+- Projeto: `raccoltogalvani`.
+- URL principal: https://raccoltogalvani.vercel.app/
+- URL do deployment informado: https://raccoltogalvani-p1uh1ddgf-luis-projects-e3d5069f.vercel.app
+- Status exibido: **Ready (Production)**.
+- Repositório: https://github.com/luisvfernando7-a11y/Galvaniwordpress
+- Branch de produção: `main`.
+- Commit do deployment informado: `9aaef57d070c5653082938cb3337bb5bf7c6ac32`.
+- Mensagem: `Valida retomada da EC2 e corrige interface de conta demonstrativa`.
+- O painel informa que pushes na `main` atualizam a produção.
+
+Esses dados descrevem um deployment anterior à criação da versão estática e não comprovam seu funcionamento.
+
+### Resultados verificados nesta execução
+
+A pasta `vercel-portfolio/` não existia inicialmente; foi criada nesta tarefa. A URL principal retornou **HTTP 404 / Vercel NOT_FOUND** antes do envio dos novos fontes. Não há acesso às configurações privadas da Vercel nesta sessão; Root Directory, domínio, Git e logs do deployment precisam ser conferidos no painel. Build independente e testes locais de páginas/interações passaram; isso não equivale a um deployment novo verificado.
+
+Verificação pública complementar em 10/10/2026, antes do push estático: os 10 caminhos principais e três recursos consultados retornaram 404 / NOT_FOUND. O deployment informado retornou 302 para `vercel.com` (200 ao seguir o redirect, sem comprovar o site). Teste local final: PASS em 23 páginas desktop/móvel e 23 destinos internos, incluindo armazenamento bloqueado, ficha sem JavaScript e 404; zero chamadas externas/POSTs/cookies/erros.
+
+Importe o mesmo repositório, ou ajuste o projeto existente, com **Root Directory = `vercel-portfolio`**, **Framework Preset = `Other`**, **Build Command = `node build.mjs`**, **Output Directory = `public`** e **Install Command com override vazio**. Não são necessários segredos ou variáveis de ambiente. A configuração está apenas em `vercel-portfolio/vercel.json`.
+
+Instruções completas: [versão estática](vercel-portfolio/README.md). Resultados e limites: [validação Vercel](docs/VALIDACAO-VERCEL.md). Referência: [configuração de build da Vercel](https://vercel.com/docs/builds/configure-a-build).
+
+## WordPress / AWS
 
 Site instalado (IMDSv2 confirmado em 10/10/2026): http://ec2-100-29-12-33.compute-1.amazonaws.com/
 

@@ -55,7 +55,7 @@ Codex CLI 0.162.0 instalado.
 Login por dispositivo habilitado; usuário informou ter concluído.
 Confirmar sessão com codex login status quando necessário.
 
-## Estado atual
+## Estado atual — WordPress/AWS
 
 Tema e plugin próprios estão versionados e instalados; WooCommerce ativo e catálogo persistente com 13 produtos. Páginas, conta e carrinho demonstrativo implementados. Não retomar a partir do antigo starter nem reinstalar WordPress.
 
@@ -119,3 +119,36 @@ Endereço vigente, confirmado por IMDSv2 em 10/10/2026: http://ec2-100-29-12-33.
 - Teste usa Tab para disparar a validação nativa da senha antes do cadastro e seleciona Sair pelo menu da conta, evitando dois links homônimos. Script de limpeza verifica registro sintético e papel customer e não remove outras contas.
 
 - Validação final do navegador: PASS, incluindo páginas/fotos, filtros, teclado/foco/modal, ficha nativa, carrinho, retirada/entrega, mostrar senha, cadastro/logout/login, móvel e reduced-motion. Duas contas sintéticas efetivamente criadas foram removidas. Teste servidor repetido: PASS, zero pedidos; fontes instalados conferidos sem diferenças. PHP (11 arquivos), JavaScript e `git diff --check` aprovados.
+
+## Portfólio independente / Vercel — 10/10/2026
+
+### Informações fornecidas pelo usuário (painel Vercel)
+
+- Projeto: `raccoltogalvani`.
+- URL principal: https://raccoltogalvani.vercel.app/
+- URL do deployment informado: https://raccoltogalvani-p1uh1ddgf-luis-projects-e3d5069f.vercel.app
+- Status exibido: Ready (Production).
+- Repositório: https://github.com/luisvfernando7-a11y/Galvaniwordpress
+- Branch de produção: `main`.
+- Commit do deployment informado: `9aaef57d070c5653082938cb3337bb5bf7c6ac32`.
+- Mensagem: Valida retomada da EC2 e corrige interface de conta demonstrativa.
+- O painel informa que pushes na main atualizam a produção.
+
+Não interpretar Ready como confirmação de que a versão estática foi criada, está sendo publicada ou funciona.
+
+### Resultados verificados e implementação desta execução
+
+- `vercel-portfolio/` não existia; criada como projeto estático independente. Configuração Vercel confinada à pasta; arquivos WordPress atuais preservados no repositório.
+- Leitura seletiva de páginas publicadas e campos públicos dos 13 produtos, por WP-CLI, sem exportar usuários, pedidos, sessões, cookies, nonces, credenciais ou configuração privada. Home adaptada diretamente do template atual; dados do catálogo em JSON. Nenhuma escrita em `/var/www/html`, no banco, URLs WordPress ou Apache.
+- 23 páginas HTML (home, 9 internas e 13 fichas), mais 404. Fotos locais idênticas aos quatro originais licenciados; CSS e JavaScript visuais derivados do tema. Filtros, carrosséis, hover/foco, diálogo e animações preservados. Todos os recursos e links de navegação usam a origem do portfólio.
+- Carrinho demonstrativo em localStorage: apenas slugs públicos, quantidades e retirada/entrega; sem endpoints, pedidos, endereço ou pagamento. Conta é prévia explícita, sem formulários pessoais, senha, cadastro ou autenticação simulada. Termos/privacidade adaptados ao armazenamento local e hospedagem.
+- Build `node build.mjs`, sem dependências, também executado em cópia isolada da pasta, sem WordPress ou outros arquivos do repositório. Auditoria estática sem URLs AWS, endpoints WordPress ou nonces no conteúdo publicado. Testes locais com todas as requisições externas bloqueadas aprovados. Detalhes em `docs/VALIDACAO-VERCEL.md`.
+- Consulta HTTP real ao domínio principal retornou 404 / Vercel NOT_FOUND antes do push. Não há acesso às configurações privadas da Vercel para confirmar root, alias, integração Git ou logs; dados do painel acima permanecem atribuídos ao usuário.
+
+### Configuração e pendências Vercel
+
+- Conferir no painel: Root Directory `vercel-portfolio`, Framework Preset `Other`, Build Command `node build.mjs`, Output Directory `public`, Install Command override vazio, produção `main` e domínio associado ao projeto. Nenhum segredo necessário.
+- Um vercel.json na subpasta não altera Root Directory do projeto sozinho. Gerar deployment de um commit que contém esta pasta e verificar build/logs, URL principal, páginas e `/data/build.json`. Não declarar o novo deployment concluído apenas por um push ou pelo status Ready antigo.
+- Alterações futuras no WordPress não sincronizam automaticamente com os JSON/templates estáticos. Atualizações são manuais e precisam de nova revisão/build/teste. Não tocar na instalação AWS para publicar esta pasta.
+
+Verificação pública complementar em 10/10/2026, antes do push estático: os 10 caminhos principais e três recursos consultados retornaram 404 / NOT_FOUND. O deployment informado retornou 302 para `vercel.com` (200 ao seguir o redirect, sem comprovar o site). Teste local final: PASS em 23 páginas desktop/móvel e 23 destinos internos, incluindo armazenamento bloqueado, ficha sem JavaScript e 404; zero chamadas externas/POSTs/cookies/erros.

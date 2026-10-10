@@ -12,3 +12,7 @@ Licença: [Unsplash License](https://unsplash.com/license), permite download e u
 | `wp-content/plugins/raccolto-core/assets/vinho.jpg` | https://images.unsplash.com/photo-1510812431401-41d2bd2722f3 | Fotografia genérica de vinho; não representa nenhum rótulo cadastrado |
 
 Os parâmetros de download apenas redimensionam e comprimem as imagens. As cópias importadas na biblioteca de mídia não são versionadas. Trocar as fotos genéricas por imagens específicas das especialidades é um refinamento editorial possível; não confundir a fotografia ilustrativa com a ficha demonstrativa.
+
+## Cópias do portfólio estático
+
+`vercel-portfolio/public/assets/{ambiente,massa,mesa,vinho}.jpg` são cópias byte a byte dos quatro arquivos listados acima, com as mesmas fontes e licença. Nenhuma fotografia de usuário foi exportada.

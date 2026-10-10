@@ -1,0 +1,493 @@
+{
+  "catalog": [
+    {
+      "slug": "rosso-casa",
+      "name": "Rosso della Casa · Demo",
+      "category": "vinho",
+      "price": 148,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/vinho.jpg",
+      "facts": {
+        "regiao": "Toscana, Itália",
+        "produtor": "Tenuta Immaginaria (fictício)",
+        "uvas": "Sangiovese",
+        "safra": "2021",
+        "engarrafamento": "2023",
+        "colheita": "Manual, seleção dos cachos (ilustrativo)",
+        "cultivo": "Convencional",
+        "vinificacao": "Fermentação controlada e estágio selecionado (ilustrativo)",
+        "notas": "Cereja, ervas e especiarias suaves.",
+        "harmonizacao": "Queijos maturados e ragù."
+      },
+      "terms": {
+        "cor": [
+          "tinto"
+        ],
+        "acucar": [
+          "seco"
+        ],
+        "efervescencia": [
+          "tranquilo"
+        ],
+        "especiais": [],
+        "cultivo": [
+          "convencional"
+        ]
+      }
+    },
+    {
+      "slug": "bianco-luce",
+      "name": "Bianco di Luce · Demo",
+      "category": "vinho",
+      "price": 126,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/vinho.jpg",
+      "facts": {
+        "regiao": "Vêneto, Itália",
+        "produtor": "Tenuta Immaginaria (fictício)",
+        "uvas": "Garganega",
+        "safra": "2023",
+        "engarrafamento": "2024",
+        "colheita": "Manual, seleção dos cachos (ilustrativo)",
+        "cultivo": "Orgânico",
+        "vinificacao": "Fermentação controlada e estágio selecionado (ilustrativo)",
+        "notas": "Cítricos, pera e flores brancas.",
+        "harmonizacao": "Queijos frescos e massas leves."
+      },
+      "terms": {
+        "cor": [
+          "branco"
+        ],
+        "acucar": [
+          "seco"
+        ],
+        "efervescencia": [
+          "tranquilo"
+        ],
+        "especiais": [],
+        "cultivo": [
+          "organico"
+        ]
+      }
+    },
+    {
+      "slug": "rosa-sera",
+      "name": "Rosa della Sera · Demo",
+      "category": "vinho",
+      "price": 132,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/vinho.jpg",
+      "facts": {
+        "regiao": "Puglia, Itália",
+        "produtor": "Tenuta Immaginaria (fictício)",
+        "uvas": "Negroamaro",
+        "safra": "2023",
+        "engarrafamento": "2024",
+        "colheita": "Manual, seleção dos cachos (ilustrativo)",
+        "cultivo": "Convencional",
+        "vinificacao": "Fermentação controlada e estágio selecionado (ilustrativo)",
+        "notas": "Morango e frutas delicadas.",
+        "harmonizacao": "Antipasti e saladas."
+      },
+      "terms": {
+        "cor": [
+          "rose"
+        ],
+        "acucar": [
+          "demi-sec"
+        ],
+        "efervescencia": [
+          "frisante"
+        ],
+        "especiais": [],
+        "cultivo": [
+          "convencional"
+        ]
+      }
+    },
+    {
+      "slug": "ambra-terra",
+      "name": "Ambra di Terra · Demo",
+      "category": "vinho",
+      "price": 179,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/vinho.jpg",
+      "facts": {
+        "regiao": "Friuli, Itália",
+        "produtor": "Tenuta Immaginaria (fictício)",
+        "uvas": "Ribolla Gialla",
+        "safra": "2022",
+        "engarrafamento": "2023",
+        "colheita": "Manual, seleção dos cachos (ilustrativo)",
+        "cultivo": "Orgânico, Biodinâmico, Natural",
+        "vinificacao": "Fermentação com maceração das cascas (ilustrativo)",
+        "notas": "Casca de laranja, chá e frutas secas.",
+        "harmonizacao": "Frios curados e cogumelos."
+      },
+      "terms": {
+        "cor": [
+          "laranja"
+        ],
+        "acucar": [
+          "seco"
+        ],
+        "efervescencia": [
+          "tranquilo"
+        ],
+        "especiais": [],
+        "cultivo": [
+          "biodinamico",
+          "natural",
+          "organico"
+        ]
+      }
+    },
+    {
+      "slug": "bollicine-festa",
+      "name": "Bollicine di Festa · Demo",
+      "category": "vinho",
+      "price": 198,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/vinho.jpg",
+      "facts": {
+        "regiao": "Lombardia, Itália",
+        "produtor": "Tenuta Immaginaria (fictício)",
+        "uvas": "Chardonnay, Pinot Nero",
+        "safra": "2021",
+        "engarrafamento": "2024",
+        "colheita": "Manual, seleção dos cachos (ilustrativo)",
+        "cultivo": "Orgânico",
+        "vinificacao": "Fermentação controlada e estágio selecionado (ilustrativo)",
+        "notas": "Maçã, brioche e final fresco.",
+        "harmonizacao": "Queijos suaves e antipasti."
+      },
+      "terms": {
+        "cor": [
+          "branco"
+        ],
+        "acucar": [
+          "seco"
+        ],
+        "efervescencia": [
+          "espumante"
+        ],
+        "especiais": [],
+        "cultivo": [
+          "organico"
+        ]
+      }
+    },
+    {
+      "slug": "rosso-dolce",
+      "name": "Rosso Dolce · Demo",
+      "category": "vinho",
+      "price": 119,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/vinho.jpg",
+      "facts": {
+        "regiao": "Emilia-Romagna, Itália",
+        "produtor": "Tenuta Immaginaria (fictício)",
+        "uvas": "Lambrusco",
+        "safra": "2023",
+        "engarrafamento": "2024",
+        "colheita": "Manual, seleção dos cachos (ilustrativo)",
+        "cultivo": "Convencional",
+        "vinificacao": "Fermentação controlada e estágio selecionado (ilustrativo)",
+        "notas": "Frutas vermelhas e doçura leve.",
+        "harmonizacao": "Frios e queijos semiduros."
+      },
+      "terms": {
+        "cor": [
+          "tinto"
+        ],
+        "acucar": [
+          "doce"
+        ],
+        "efervescencia": [
+          "frisante"
+        ],
+        "especiais": [],
+        "cultivo": [
+          "convencional"
+        ]
+      }
+    },
+    {
+      "slug": "riserva-dopocena",
+      "name": "Riserva Dopocena · Demo",
+      "category": "vinho",
+      "price": 219,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/vinho.jpg",
+      "facts": {
+        "regiao": "Sicília, Itália",
+        "produtor": "Tenuta Immaginaria (fictício)",
+        "uvas": "Grillo",
+        "safra": "2020",
+        "engarrafamento": "2024",
+        "colheita": "Manual, seleção dos cachos (ilustrativo)",
+        "cultivo": "Convencional",
+        "vinificacao": "Fermentação controlada e estágio selecionado (ilustrativo)",
+        "notas": "Nozes, caramelo e frutas secas.",
+        "harmonizacao": "Queijos azuis e sobremesas."
+      },
+      "terms": {
+        "cor": [
+          "branco"
+        ],
+        "acucar": [
+          "doce"
+        ],
+        "efervescencia": [
+          "tranquilo"
+        ],
+        "especiais": [
+          "fortificado"
+        ],
+        "cultivo": [
+          "convencional"
+        ]
+      }
+    },
+    {
+      "slug": "oro-autunno",
+      "name": "Oro d’Autunno · Demo",
+      "category": "vinho",
+      "price": 189,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/vinho.jpg",
+      "facts": {
+        "regiao": "Piemonte, Itália",
+        "produtor": "Tenuta Immaginaria (fictício)",
+        "uvas": "Moscato",
+        "safra": "2022",
+        "engarrafamento": "2023",
+        "colheita": "Manual, seleção dos cachos (ilustrativo)",
+        "cultivo": "Orgânico",
+        "vinificacao": "Fermentação controlada e estágio selecionado (ilustrativo)",
+        "notas": "Mel, damasco e flores.",
+        "harmonizacao": "Queijos azuis e tortas de fruta."
+      },
+      "terms": {
+        "cor": [
+          "branco"
+        ],
+        "acucar": [
+          "doce"
+        ],
+        "efervescencia": [
+          "tranquilo"
+        ],
+        "especiais": [
+          "botritizado",
+          "colheita-tardia"
+        ],
+        "cultivo": [
+          "organico"
+        ]
+      }
+    },
+    {
+      "slug": "ghiaccio-luce",
+      "name": "Ghiaccio di Luce · Demo",
+      "category": "vinho",
+      "price": 239,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/vinho.jpg",
+      "facts": {
+        "regiao": "Região alpina conceitual",
+        "produtor": "Tenuta Immaginaria (fictício)",
+        "uvas": "Riesling",
+        "safra": "2022",
+        "engarrafamento": "2023",
+        "colheita": "Manual, uvas congeladas (ilustrativo)",
+        "cultivo": "Convencional",
+        "vinificacao": "Fermentação controlada e estágio selecionado (ilustrativo)",
+        "notas": "Frutas de caroço e acidez intensa.",
+        "harmonizacao": "Queijos cremosos e sobremesas."
+      },
+      "terms": {
+        "cor": [
+          "branco"
+        ],
+        "acucar": [
+          "doce"
+        ],
+        "efervescencia": [
+          "tranquilo"
+        ],
+        "especiais": [
+          "icewine"
+        ],
+        "cultivo": [
+          "convencional"
+        ]
+      }
+    },
+    {
+      "slug": "tagliere",
+      "name": "Tagliere di Salumi · Demo",
+      "category": "especialidade",
+      "price": 76,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/mesa.jpg",
+      "facts": {
+        "regiao": "Seleção italiana conceitual",
+        "produtor": "Cucina Galvani (fictício)",
+        "uvas": "",
+        "safra": "",
+        "engarrafamento": "",
+        "colheita": "",
+        "cultivo": "",
+        "vinificacao": "",
+        "notas": "Frios curados, especiarias e textura delicada.",
+        "harmonizacao": "Rosso della Casa ou Lambrusco."
+      },
+      "terms": {
+        "cor": [],
+        "acucar": [],
+        "efervescencia": [],
+        "especiais": [],
+        "cultivo": []
+      }
+    },
+    {
+      "slug": "formaggi",
+      "name": "Trio di Formaggi · Demo",
+      "category": "especialidade",
+      "price": 68,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/mesa.jpg",
+      "facts": {
+        "regiao": "Seleção italiana conceitual",
+        "produtor": "Cucina Galvani (fictício)",
+        "uvas": "",
+        "safra": "",
+        "engarrafamento": "",
+        "colheita": "",
+        "cultivo": "",
+        "vinificacao": "",
+        "notas": "Queijos de três maturações, do suave ao intenso.",
+        "harmonizacao": "Bianco di Luce ou Oro d’Autunno."
+      },
+      "terms": {
+        "cor": [],
+        "acucar": [],
+        "efervescencia": [],
+        "especiais": [],
+        "cultivo": []
+      }
+    },
+    {
+      "slug": "pasta",
+      "name": "Pasta al Pomodoro · Demo",
+      "category": "especialidade",
+      "price": 58,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/massa.jpg",
+      "facts": {
+        "regiao": "Cozinha italiana conceitual",
+        "produtor": "Cucina Galvani (fictício)",
+        "uvas": "",
+        "safra": "",
+        "engarrafamento": "",
+        "colheita": "",
+        "cultivo": "",
+        "vinificacao": "",
+        "notas": "Massa com molho de tomate e ervas frescas.",
+        "harmonizacao": "Rosso della Casa."
+      },
+      "terms": {
+        "cor": [],
+        "acucar": [],
+        "efervescencia": [],
+        "especiais": [],
+        "cultivo": []
+      }
+    },
+    {
+      "slug": "burrata",
+      "name": "Burrata e Orto · Demo",
+      "category": "especialidade",
+      "price": 54,
+      "description": "Produto demonstrativo do portfólio fictício Raccolto Galvani. Nome, produtor e ficha são ilustrativos; fotografia de referência. Não disponível para compra real.",
+      "image": "/assets/mesa.jpg",
+      "facts": {
+        "regiao": "Cozinha italiana conceitual",
+        "produtor": "Cucina Galvani (fictício)",
+        "uvas": "",
+        "safra": "",
+        "engarrafamento": "",
+        "colheita": "",
+        "cultivo": "",
+        "vinificacao": "",
+        "notas": "Queijo fresco cremoso e vegetais de estação.",
+        "harmonizacao": "Bianco di Luce."
+      },
+      "terms": {
+        "cor": [],
+        "acucar": [],
+        "efervescencia": [],
+        "especiais": [],
+        "cultivo": []
+      }
+    }
+  ],
+  "classifications": {
+    "cor": [
+      "Cor",
+      {
+        "tinto": "Tinto",
+        "branco": "Branco",
+        "rose": "Rosé",
+        "laranja": "Laranja / âmbar"
+      }
+    ],
+    "acucar": [
+      "Açúcar",
+      {
+        "seco": "Seco",
+        "demi-sec": "Demi-sec",
+        "doce": "Suave / doce"
+      }
+    ],
+    "efervescencia": [
+      "Efervescência",
+      {
+        "tranquilo": "Tranquilo",
+        "frisante": "Frisante",
+        "espumante": "Espumante"
+      }
+    ],
+    "especiais": [
+      "Especiais",
+      {
+        "fortificado": "Fortificado",
+        "colheita-tardia": "Colheita tardia",
+        "botritizado": "Botritizado",
+        "icewine": "Icewine"
+      }
+    ],
+    "cultivo": [
+      "Cultivo",
+      {
+        "convencional": "Convencional",
+        "organico": "Orgânico",
+        "biodinamico": "Biodinâmico",
+        "natural": "Natural"
+      }
+    ]
+  },
+  "fields": {
+    "regiao": "Região",
+    "produtor": "Produtor (demonstrativo)",
+    "uvas": "Uvas",
+    "safra": "Safra",
+    "engarrafamento": "Ano de engarrafamento",
+    "colheita": "Método de colheita",
+    "cultivo": "Cultivo",
+    "vinificacao": "Vinificação",
+    "notas": "Notas sensoriais",
+    "harmonizacao": "Harmonização"
+  }
+}
